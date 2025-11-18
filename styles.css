@@ -400,6 +400,7 @@ a{color:inherit;text-decoration:none}
   .expert-quote-text{text-align:center;}
   .expert-attribution{text-align:center;}
 }
+
 @media (max-width:620px){
   .header-inner{flex-wrap:wrap;justify-content:space-between}
   .header-tagline{
@@ -423,5 +424,113 @@ a{color:inherit;text-decoration:none}
   .footer-bottom{
     flex-direction:column;
     align-items:flex-start;
+  }
+}
+
+/* Extra fine-tuning for small tablets & mobile */
+@media (max-width:768px){
+  .section{
+    padding:56px 0;
+  }
+  .hero{
+    padding-top:64px;
+    padding-bottom:38px;
+  }
+  .hero-small{
+    font-size:16px;
+  }
+  .consulting{
+    padding-bottom:70px;
+  }
+  .expert-quote{
+    padding:60px 0;
+  }
+}
+
+@media (max-width:480px){
+  body{
+    font-size:15px;
+  }
+  .container{
+    padding:0 16px;
+  }
+  .header-inner{
+    gap:10px;
+  }
+  .header-tagline{
+    font-size:13px;
+    letter-spacing:.06em;
+    word-spacing:.16em;
+  }
+  .section{
+    padding:50px 0;
+  }
+  .section-title{
+    font-size:26px;
+  }
+  .hero{
+    padding-top:56px;
+    padding-bottom:32px;
+  }
+  .hero-title{
+    font-size:30px;
+    line-height:1.08;
+  }
+  .hero-title .line-2{
+    white-space:normal;
+  }
+  .hero-small{
+    font-size:15px;
+  }
+  .os-left{
+    padding:20px 16px 18px;
+  }
+  .os-left-title{
+    font-size:18px;
+  }
+  .os-left-subtitle{
+    font-size:14px;
+  }
+  .os-card{
+    padding:18px 16px 20px;
+    min-height:auto;
+  }
+  .os-card h5{
+    font-size:16px;
+  }
+  .os-card p{
+    font-size:14.5px;
+  }
+  .consult-card{
+    padding:22px 18px 24px;
+  }
+  .consult-card h3{
+    font-size:17px;
+  }
+  .consult-card p{
+    font-size:14.5px;
+  }
+  .expert-quote{
+    padding:54px 0;
+  }
+  .expert-quote-text{
+    font-size:20px;
+  }
+  .site-footer{
+    padding:32px 0 22px;
+    font-size:12.5px;
+  }
+  .footer-main{
+    gap:24px;
+  }
+  .footer-columns{
+    grid-template-columns:1fr;
+  }
+  .footer-links{
+    flex-wrap:wrap;
+    row-gap:4px;
+  }
+  .footer-bottom{
+    gap:10px;
   }
 }
