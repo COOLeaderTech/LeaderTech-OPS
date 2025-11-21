@@ -51,9 +51,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // 👇 These keys (name, email, company) must match your template variables
       const templateParams = {
-        name: name,
-        email: email,
-        company: company
+        NAME: NAME,
+        BUSINESS EMAIL: BUSINESS EMAIL,
+        COMPANY: COMPANY 
       };
 
       // Send via EmailJS
