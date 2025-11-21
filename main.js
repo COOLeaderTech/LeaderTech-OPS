@@ -7,15 +7,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const overlay = modal.querySelector('.demo-modal-overlay');
   const form = document.getElementById('demo-form');
 
-  // 🔑 FILL THESE FROM EMAILJS DASHBOARD
-  const serviceID = 'service_cmbatf9';
-  const templateID = 'template_p9k8v7p';
-
   function openModal(event) {
     if (event) event.preventDefault();
     modal.classList.add('is-open');
-    const nameInput = document.getElementById('demo-name');
-    if (nameInput) nameInput.focus();
+    const firstInput = document.getElementById('demo-business');
+    if (firstInput) firstInput.focus();
   }
 
   function closeModal(event) {
@@ -32,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape' && modal.classList.contains('is-open')) {
-      closeModal();
+      closeModal(event);
     }
   });
 
@@ -40,33 +36,20 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (event) {
       event.preventDefault();
 
-      const name = document.getElementById('demo-name').value.trim();
+      const business = document.getElementById('demo-business').value.trim();
       const email = document.getElementById('demo-email').value.trim();
       const company = document.getElementById('demo-company').value.trim();
 
-      if (!name || !email || !company) {
+      if (!business || !email || !company) {
         alert('Please fill in all fields.');
         return;
       }
 
-      // 👇 These keys (name, email, company) must match your template variables
-      const templateParams = {
-        NAME: NAME,
-        BUSINESS EMAIL: BUSINESS EMAIL,
-        COMPANY: COMPANY 
-      };
-
-      // Send via EmailJS
-      emailjs.send(serviceID, templateID, templateParams)
-        .then(function () {
-          form.reset();
-          closeModal();
-          alert('Thank you. Your demo request has been sent.');
-        })
-        .catch(function (error) {
-          console.error('EmailJS error:', error);
-          alert('There was a problem sending your request. Please try again later.');
-        });
+      // No backend: just close and show confirmation
+      form.reset();
+      closeModal(event);
+      alert('Thank you. We received your demo request.');
     });
   }
 });
+
