@@ -6,12 +6,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const closeBtn = modal.querySelector('.demo-modal-close');
   const overlay = modal.querySelector('.demo-modal-overlay');
   const form = document.getElementById('demo-form');
+  const emailTo = 'coo@leader-tech.ai';
 
   function openModal(event) {
     if (event) event.preventDefault();
     modal.classList.add('is-open');
-    const firstInput = document.getElementById('demo-business');
-    if (firstInput) firstInput.focus();
+    const nameInput = document.getElementById('demo-name');
+    if (nameInput) {
+      nameInput.focus();
+    }
   }
 
   function closeModal(event) {
@@ -23,12 +26,17 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.addEventListener('click', openModal);
   });
 
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-  if (overlay) overlay.addEventListener('click', closeModal);
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', closeModal);
+  }
 
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape' && modal.classList.contains('is-open')) {
-      closeModal(event);
+      closeModal();
     }
   });
 
@@ -36,20 +44,27 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (event) {
       event.preventDefault();
 
-      const business = document.getElementById('demo-business').value.trim();
+      const name = document.getElementById('demo-name').value.trim();
       const email = document.getElementById('demo-email').value.trim();
       const company = document.getElementById('demo-company').value.trim();
 
-      if (!business || !email || !company) {
+      if (!name || !email || !company) {
         alert('Please fill in all fields.');
         return;
       }
 
-      // No backend: just close and show confirmation
-      form.reset();
-      closeModal(event);
-      alert('Thank you. We received your demo request.');
+      const subject = encodeURIComponent('Demo request from ' + name);
+      const bodyLines = [
+        'Name: ' + name,
+        'Business email: ' + email,
+        'Company: ' + company
+      ];
+      const body = encodeURIComponent(bodyLines.join('\n'));
+
+      // Opens the user’s email client with prefilled content
+      window.location.href = 'mailto:' + emailTo + '?subject=' + subject + '&body=' + body;
+
+      closeModal();
     });
   }
 });
-
