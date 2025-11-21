@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const overlay = modal.querySelector('.demo-modal-overlay');
   const form = document.getElementById('demo-form');
 
-  // 🔑 FILL THESE FROM EMAILJS DASHBOARD
+  // EmailJS IDs (already set by you)
   const serviceID = 'service_cmbatf9';
   const templateID = 'template_p9k8v7p';
 
@@ -49,14 +49,13 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      // 👇 These keys (name, email, company) must match your template variables
+      // These keys must match the variables in your EmailJS template: {{name}}, {{email}}, {{company}}
       const templateParams = {
-        NAME: NAME,
-        BUSINESS EMAIL: BUSINESS EMAIL,
-        COMPANY: COMPANY 
+        name: name,
+        email: email,
+        company: company
       };
 
-      // Send via EmailJS
       emailjs.send(serviceID, templateID, templateParams)
         .then(function () {
           form.reset();
@@ -70,4 +69,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
 
