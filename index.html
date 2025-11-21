@@ -17,8 +17,23 @@
         <span class="logo-mark">LT</span>
         <span class="logo-text">LeaderTech</span>
       </a>
+
+      <!-- New: EU powered block -->
+      <div class="header-eu" aria-label="Powered by the EU environment">
+        <div class="header-eu-text">
+          <span class="eu-powered">powered by the EU</span>
+          <span class="eu-env">environment</span>
+        </div>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg"
+          alt="European Union flag"
+          class="eu-flag"
+          loading="lazy"
+        >
+      </div>
+
       <p class="header-tagline">AI for the RealEstate</p>
-      <a href="#" class="btn btn-cta">Request a Demo</a>
+      <a href="#" class="btn btn-cta js-open-demo">Request a Demo</a>
     </div>
   </header>
 
@@ -34,7 +49,7 @@
           In-house AI systems for Agencies, Specialists, Teams, and the RealTrend 500
         </p>
         <div class="hero-cta">
-          <a href="#" class="btn btn-primary">Request a Demo</a>
+          <a href="#" class="btn btn-primary js-open-demo">Request a Demo</a>
         </div>
       </div>
     </section>
@@ -171,7 +186,7 @@
 
       <div class="footer-columns">
         <div class="footer-cta">
-          <a href="#" class="btn footer-btn">Request a Demo</a>
+          <a href="#" class="btn footer-btn js-open-demo">Request a Demo</a>
         </div>
 
         <div class="footer-col">
@@ -203,5 +218,34 @@
       </div>
     </div>
   </footer>
+
+  <!-- New: Demo request modal -->
+  <div class="demo-modal" id="demo-modal" aria-hidden="true">
+    <div class="demo-modal-overlay"></div>
+    <div class="demo-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title">
+      <button type="button" class="demo-modal-close" aria-label="Close">&times;</button>
+      <h2 id="demo-modal-title" class="demo-modal-title">Request a Demo</h2>
+      <p class="demo-modal-subtitle">Tell us a bit about your office and we’ll get back to you.</p>
+      <form id="demo-form" class="demo-form">
+        <div class="demo-field">
+          <label for="demo-name">Name</label>
+          <input type="text" id="demo-name" name="name" required>
+        </div>
+        <div class="demo-field">
+          <label for="demo-email">Business email</label>
+          <input type="email" id="demo-email" name="email" required>
+        </div>
+        <div class="demo-field">
+          <label for="demo-company">Company name</label>
+          <input type="text" id="demo-company" name="company" required>
+        </div>
+        <button type="submit" class="btn demo-submit">Send</button>
+        <p class="demo-helper-text">We’ll only use this to contact you about your demo.</p>
+      </form>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
 </body>
 </html>
+
