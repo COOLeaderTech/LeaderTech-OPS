@@ -26,6 +26,43 @@ a{color:inherit;text-decoration:none}
   font-size:15.5px;letter-spacing:.08em;word-spacing:.2em;
   white-space:nowrap;flex:1 1 auto;text-align:center;line-height:1.1;
 }
+
+/* New: EU powered block next to logo */
+.header-eu{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-left:14px;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:rgba(229,231,235,.92);
+  white-space:nowrap;
+}
+.header-eu-text{
+  display:flex;
+  flex-direction:column;
+  line-height:1.15;
+  text-align:center;
+}
+.header-eu-text .eu-powered{
+  font-weight:500;
+}
+.header-eu-text .eu-env{
+  font-size:11px;          /* same size as above */
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  opacity:.9;
+}
+.eu-flag{
+  width:32px;              /* ~30% larger than 24px */
+  height:21px;             /* keep aspect ratio */
+  border-radius:2px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.16);
+  object-fit:cover;
+}
+
+
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
   background:#fff;color:#000;padding:9px 18px 10px;
@@ -377,6 +414,121 @@ a{color:inherit;text-decoration:none}
   color:#000;
 }
 
+/* New: Demo modal (dark + brown/neutral palette) */
+.demo-modal{
+  position:fixed;
+  inset:0;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .18s ease;
+}
+.demo-modal.is-open{
+  opacity:1;
+  pointer-events:auto;
+}
+.demo-modal-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(6px);
+}
+.demo-modal-dialog{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:420px;
+  background:linear-gradient(145deg,#050507,#151519);
+  border-radius:20px;
+  padding:24px 22px 22px;
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:0 24px 60px rgba(0,0,0,.6);
+  color:#f5f5f7;
+}
+.demo-modal-title{
+  margin:0 0 6px;
+  font-size:20px;
+  font-weight:600;
+}
+.demo-modal-subtitle{
+  margin:0 0 16px;
+  font-size:14px;
+  color:rgba(231,231,239,.75);
+}
+.demo-modal-close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:28px;
+  height:28px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(8,8,10,.9);
+  color:#f9fafb;
+  font-size:16px;
+  line-height:1;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+.demo-modal-close:hover{
+  background:rgba(255,255,255,.08);
+}
+.demo-form{
+  margin-top:6px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.demo-field label{
+  display:block;
+  margin-bottom:4px;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:rgba(229,231,235,.9);
+}
+.demo-field input{
+  width:100%;
+  padding:9px 11px 10px;
+  border-radius:999px;
+  border:1px solid rgba(148,163,184,.5);
+  background:rgba(15,16,20,.96);
+  color:#f9fafb;
+  font-size:14px;
+  outline:none;
+  transition:border-color .14s ease,box-shadow .14s ease,background .14s ease;
+}
+.demo-field input::placeholder{
+  color:rgba(148,163,184,.9);
+}
+.demo-field input:focus{
+  border-color:#b48a4a;
+  box-shadow:0 0 0 1px rgba(180,138,74,.7);
+}
+.demo-submit{
+  width:100%;
+  margin-top:6px;
+  background:#b48a4a;
+  color:#0b0c0f;
+  padding:10px 18px 11px;
+  font-size:14px;
+}
+.demo-submit:hover{
+  background:#d1a762;
+  color:#050506;
+}
+.demo-helper-text{
+  margin:8px 2px 0;
+  font-size:11px;
+  color:rgba(209,213,219,.8);
+}
+
 /* Responsive */
 @media (max-width:960px){
   .os-split{grid-template-columns:1fr}
@@ -407,6 +559,12 @@ a{color:inherit;text-decoration:none}
     order:2;width:100%;text-align:center;margin:4px 0 0;white-space:normal
   }
   .btn-cta{order:3}
+
+  /* Make EU block behave nicely on small screens */
+  .header-eu{
+    margin-left:0;
+  }
+
   .hero-title{font-size:36px}
   .os-cards{grid-template-columns:1fr}
   .footer-main{
@@ -447,6 +605,7 @@ a{color:inherit;text-decoration:none}
   }
 }
 
+/* Extra fine-tuning for small phones */
 @media (max-width:480px){
   body{
     font-size:15px;
@@ -532,5 +691,10 @@ a{color:inherit;text-decoration:none}
   }
   .footer-bottom{
     gap:10px;
+  }
+
+  .demo-modal-dialog{
+    margin:0 16px;
+    padding:22px 18px 20px;
   }
 }
