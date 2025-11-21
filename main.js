@@ -6,15 +6,16 @@ document.addEventListener('DOMContentLoaded', function () {
   const closeBtn = modal.querySelector('.demo-modal-close');
   const overlay = modal.querySelector('.demo-modal-overlay');
   const form = document.getElementById('demo-form');
-  const emailTo = 'coo@leader-tech.ai';
+
+  // EmailJS IDs (already set by you)
+  const serviceID = 'service_cmbatf9';
+  const templateID = 'template_p9k8v7p';
 
   function openModal(event) {
     if (event) event.preventDefault();
     modal.classList.add('is-open');
     const nameInput = document.getElementById('demo-name');
-    if (nameInput) {
-      nameInput.focus();
-    }
+    if (nameInput) nameInput.focus();
   }
 
   function closeModal(event) {
@@ -26,13 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.addEventListener('click', openModal);
   });
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeModal);
-  }
-
-  if (overlay) {
-    overlay.addEventListener('click', closeModal);
-  }
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (overlay) overlay.addEventListener('click', closeModal);
 
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape' && modal.classList.contains('is-open')) {
@@ -53,19 +49,25 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      const subject = encodeURIComponent('Demo request from ' + name);
-      const bodyLines = [
-        'Name: ' + name,
-        'Business email: ' + email,
-        'Company: ' + company
-      ];
-      const body = encodeURIComponent(bodyLines.join('\n'));
+      // These keys must match the variables in your EmailJS template: {{name}}, {{email}}, {{company}}
+      const templateParams = {
+        name: name,
+        email: email,
+        company: company
+      };
 
-      // Opens the user’s email client with prefilled content
-      window.location.href = 'mailto:' + emailTo + '?subject=' + subject + '&body=' + body;
-
-      closeModal();
+      emailjs.send(serviceID, templateID, templateParams)
+        .then(function () {
+          form.reset();
+          closeModal();
+          alert('Thank you. Your demo request has been sent.');
+        })
+        .catch(function (error) {
+          console.error('EmailJS error:', error);
+          alert('There was a problem sending your request. Please try again later.');
+        });
     });
   }
 });
+
 
