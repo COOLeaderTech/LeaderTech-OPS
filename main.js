@@ -67,4 +67,25 @@ document.addEventListener('DOMContentLoaded', function () {
       closeModal();
     });
   }
+
+  // --- Hero video play logic ---
+  const heroVideo = document.getElementById('hero-video');
+  const heroPlayButton = document.querySelector('.hero-video-play');
+
+  if (heroVideo && heroPlayButton) {
+    heroPlayButton.addEventListener('click', function () {
+      heroVideo.play().catch(function () {
+        // Fail silently if browser blocks autoplay
+      });
+    });
+
+    // Hide button when playing, show when paused
+    heroVideo.addEventListener('play', function () {
+      heroPlayButton.style.display = 'none';
+    });
+
+    heroVideo.addEventListener('pause', function () {
+      heroPlayButton.style.display = 'flex';
+    });
+  }
 });
