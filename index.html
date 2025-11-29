@@ -48,9 +48,6 @@
         <p class="hero-small">
           In-house AI systems for Agencies, Specialists, Teams, and the RealTrend 500
         </p>
-        <div class="hero-cta">
-          <a href="#" class="btn btn-primary js-open-demo">Request a Demo</a>
-        </div>
 
         <!-- Hero video block -->
         <div class="hero-video-wrapper">
@@ -60,12 +57,14 @@
               class="hero-video"
               preload="metadata"
               playsinline
+              controlslist="nodownload noplaybackrate noremoteplayback"
+              disablepictureinpicture
             >
               <source src="https://www.dropbox.com/scl/fi/79i6rqd4233l0zjddv2pz/hero.mp4.mp4?rlkey=qcymegkdayev8bsh9e6cyex6t&st=ay5ap1xk&raw=1" type="video/mp4">
               Your browser does not support the video tag.
             </video>
 
-            <!-- Big inverted triangle play button (overlay) -->
+            <!-- Big inverted triangle play button (no text) -->
             <button
               type="button"
               class="hero-video-play"
@@ -73,39 +72,13 @@
             >
               <span class="hero-play-icon"></span>
             </button>
-
-            <!-- Minimal custom controls: play, scrub, fullscreen -->
-            <div class="hero-video-controls">
-              <button
-                type="button"
-                class="hero-control-btn hero-control-play"
-                aria-label="Play/Pause"
-              >
-                <span class="hero-control-icon hero-control-icon-play"></span>
-              </button>
-
-              <input
-                type="range"
-                class="hero-control-progress"
-                min="0"
-                max="100"
-                value="0"
-                step="0.1"
-                aria-label="Video progress"
-              />
-
-              <button
-                type="button"
-                class="hero-control-btn hero-control-fullscreen"
-                aria-label="Fullscreen"
-              >
-                <span class="hero-control-icon hero-control-icon-fullscreen"></span>
-              </button>
-            </div>
           </div>
         </div>
         <!-- End hero video block -->
 
+        <div class="hero-cta">
+          <a href="#" class="btn btn-primary js-open-demo">Request a Demo</a>
+        </div>
       </div>
     </section>
 
