@@ -68,40 +68,110 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- Hero video play logic ---
+  // --- Hero video minimal custom controls ---
   const heroVideo = document.getElementById('hero-video');
-  const heroPlayButton = document.querySelector('.hero-video-play');
+  const heroOverlayPlay = document.querySelector('.hero-video-play');
+  const heroControlPlay = document.querySelector('.hero-control-play');
+  const heroProgress = document.querySelector('.hero-control-progress');
+  const heroFullscreen = document.querySelector('.hero-control-fullscreen');
 
-  if (heroVideo && heroPlayButton) {
-    // Ensure video is initially muted until user interacts (for autoplay policies),
-    // but we will unmute on click.
-    heroVideo.muted = true;
-
-    heroPlayButton.addEventListener('click', function () {
-      // On user click: enable controls + sound, then play
-      heroVideo.muted = false;
-      heroVideo.controls = true;
-
-      if (heroVideo.paused) {
+  if (heroVideo) {
+    // Toggle play / pause
+    function togglePlay() {
+      if (heroVideo.paused || heroVideo.ended) {
         heroVideo.play().catch(function () {
           // If browser blocks play, do nothing
         });
       } else {
         heroVideo.pause();
       }
-    });
+    }
 
-    // Hide button when playing, show when paused/ended
+    // Overlay big play button
+    if (heroOverlayPlay) {
+      heroOverlayPlay.addEventListener('click', function () {
+        togglePlay();
+      });
+    }
+
+    // Small play button in control bar
+    if (heroControlPlay) {
+      heroControlPlay.addEventListener('click', function () {
+        togglePlay();
+      });
+    }
+
+    // Update UI when playing / paused / ended
     heroVideo.addEventListener('play', function () {
-      heroPlayButton.style.display = 'none';
+      if (heroOverlayPlay) {
+        heroOverlayPlay.style.display = 'none';
+      }
     });
 
     heroVideo.addEventListener('pause', function () {
-      heroPlayButton.style.display = 'flex';
+      if (heroOverlayPlay) {
+        heroOverlayPlay.style.display = 'flex';
+      }
     });
 
     heroVideo.addEventListener('ended', function () {
-      heroPlayButton.style.display = 'flex';
+      if (heroOverlayPlay) {
+        heroOverlayPlay.style.display = 'flex';
+      }
+      if (heroProgress) {
+        heroProgress.value = 0;
+      }
     });
+
+    // Progress bar: reflect current time
+    if (heroProgress) {
+      heroVideo.addEventListener('timeupdate', function () {
+        if (!heroVideo.duration || isNaN(heroVideo.duration)) return;
+        const percent = (heroVideo.currentTime / heroVideo.duration) * 100;
+        heroProgress.value = percent;
+      });
+
+      // Scrub / swipe to seek
+      heroProgress.addEventListener('input', function () {
+        if (!heroVideo.duration || isNaN(heroVideo.duration)) return;
+        const value = parseFloat(heroProgress.value) || 0;
+        heroVideo.currentTime = heroVideo.duration * (value / 100);
+      });
+    }
+
+    // Fullscreen toggle
+    if (heroFullscreen) {
+      heroFullscreen.addEventListener('click', function () {
+        const elem = heroVideo;
+
+        const isFullscreen =
+          document.fullscreenElement ||
+          document.webkitFullscreenElement ||
+          document.mozFullScreenElement ||
+          document.msFullscreenElement;
+
+        if (!isFullscreen) {
+          if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+          } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+          } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
+          } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+          }
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+          } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+          }
+        }
+      });
+    }
   }
 });
