@@ -43,22 +43,19 @@ a{color:inherit;text-decoration:none}
   display:flex;
   flex-direction:column;
   line-height:1.15;
-  align-items:center;
-  text-align:center;
 }
 .header-eu-text .eu-powered{
   font-weight:500;
 }
 .header-eu-text .eu-env{
-  font-size:11px;
-  font-weight:500;
-  text-transform:uppercase;
-  letter-spacing:.12em;
-  opacity:1;
+  font-size:10px;
+  text-transform:none;
+  letter-spacing:.06em;
+  opacity:.8;
 }
 .eu-flag{
-  width:32px;
-  height:21px;
+  width:24px;
+  height:16px;
   border-radius:2px;
   box-shadow:0 0 0 1px rgba(255,255,255,.16);
   object-fit:cover;
@@ -114,7 +111,7 @@ a{color:inherit;text-decoration:none}
 }
 .hero-cta{margin-top:22px;text-align:center}
 
-/* Hero video block (Harvey-style with big triangle) */
+/* Hero video block (Harvey-style with big triangle + custom controls) */
 .hero-video-wrapper{
   margin-top:28px;
 }
@@ -127,8 +124,6 @@ a{color:inherit;text-decoration:none}
   box-shadow:0 20px 50px rgba(0,0,0,.7);
   border:1px solid rgba(255,255,255,.08);
   aspect-ratio:16/9;
-  transform:scale(1.12);
-  transform-origin:center;
 }
 .hero-video{
   width:100%;
@@ -136,11 +131,12 @@ a{color:inherit;text-decoration:none}
   object-fit:cover;
   display:block;
 }
+
+/* Big center play button */
 .hero-video-play{
   position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
+  inset:0;
+  margin:auto;
   width:80px;
   height:80px;
   border-radius:999px;
@@ -154,7 +150,7 @@ a{color:inherit;text-decoration:none}
 }
 .hero-video-play:hover{
   background:rgba(0,0,0,.8);
-  transform:translate(-50%,-50%) scale(1.05);
+  transform:scale(1.05);
   box-shadow:0 0 0 1px rgba(255,255,255,.28);
 }
 .hero-play-icon{
@@ -163,7 +159,96 @@ a{color:inherit;text-decoration:none}
   border-top:14px solid transparent;
   border-bottom:14px solid transparent;
   border-left:22px solid #f9fafb;
-  margin-left:3px; /* small visual centering */
+  margin-left:3px;
+}
+
+/* Minimal custom controls: play, scrub, fullscreen */
+.hero-video-controls{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:10px 14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:linear-gradient(to top,rgba(0,0,0,.7),transparent);
+  pointer-events:auto;
+}
+.hero-control-btn{
+  width:30px;
+  height:30px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(0,0,0,.5);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  padding:0;
+  flex-shrink:0;
+  transition:background .16s ease,transform .16s ease,border-color .16s ease;
+}
+.hero-control-btn:hover{
+  background:rgba(0,0,0,.8);
+  border-color:rgba(255,255,255,.5);
+  transform:translateY(-1px);
+}
+.hero-control-icon{
+  display:inline-block;
+}
+
+/* Small play triangle icon (bottom bar) */
+.hero-control-icon-play{
+  width:0;
+  height:0;
+  border-top:7px solid transparent;
+  border-bottom:7px solid transparent;
+  border-left:11px solid #f9fafb;
+  margin-left:2px;
+}
+
+/* Fullscreen icon (simple box) */
+.hero-control-icon-fullscreen::before{
+  content:"⛶";
+  font-size:14px;
+  line-height:1;
+  color:#f9fafb;
+}
+
+/* Progress bar */
+.hero-control-progress{
+  -webkit-appearance:none;
+  appearance:none;
+  flex:1;
+  height:3px;
+  border-radius:999px;
+  background:rgba(148,163,184,.5);
+  outline:none;
+  cursor:pointer;
+}
+.hero-control-progress::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  appearance:none;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#f9fafb;
+  border:none;
+  box-shadow:0 0 0 2px rgba(0,0,0,.5);
+}
+.hero-control-progress::-moz-range-thumb{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#f9fafb;
+  border:none;
+  box-shadow:0 0 0 2px rgba(0,0,0,.5);
+}
+.hero-control-progress::-moz-range-track{
+  height:3px;
+  border-radius:999px;
+  background:rgba(148,163,184,.5);
 }
 
 /* Part 2 — Introducing RealEstate OS */
@@ -606,29 +691,6 @@ a{color:inherit;text-decoration:none}
   .expert-attribution{text-align:center;}
 }
 
-/* Extra fine-tuning for small tablets & mobile */
-@media (max-width:768px){
-  .section{
-    padding:56px 0;
-  }
-  .hero{
-    padding-top:64px;
-    padding-bottom:38px;
-  }
-  .hero-small{
-    font-size:16px;
-  }
-  .hero-video-frame{
-    transform:none;
-  }
-  .consulting{
-    padding-bottom:70px;
-  }
-  .expert-quote{
-    padding:60px 0;
-  }
-}
-
 @media (max-width:620px){
   .header-inner{flex-wrap:wrap;justify-content:space-between}
   .header-tagline{
@@ -655,6 +717,26 @@ a{color:inherit;text-decoration:none}
   .footer-bottom{
     flex-direction:column;
     align-items:flex-start;
+  }
+}
+
+/* Extra fine-tuning for small tablets & mobile */
+@media (max-width:768px){
+  .section{
+    padding:56px 0;
+  }
+  .hero{
+    padding-top:64px;
+    padding-bottom:38px;
+  }
+  .hero-small{
+    font-size:16px;
+  }
+  .consulting{
+    padding-bottom:70px;
+  }
+  .expert-quote{
+    padding:60px 0;
   }
 }
 
@@ -699,7 +781,6 @@ a{color:inherit;text-decoration:none}
   }
   .hero-video-frame{
     border-radius:16px;
-    transform:none;
   }
   .hero-video-play{
     width:64px;
@@ -709,40 +790,6 @@ a{color:inherit;text-decoration:none}
     border-top:12px solid transparent;
     border-bottom:12px solid transparent;
     border-left:20px solid #f9fafb;
-  }
-  .os-left{
-    padding:20px 16px 18px;
-  }
-  .os-left-title{
-    font-size:18px;
-  }
-  .os-left-subtitle{
-    font-size:14px;
-  }
-  .os-card{
-    padding:18px 16px 20px;
-    min-height:auto;
-  }
-  .os-card h5{
-    font-size:16px;
-  }
-  .os-card p{
-    font-size:14.5px;
-  }
-  .consult-card{
-    padding:22px 18px 24px;
-  }
-  .consult-card h3{
-    font-size:17px;
-  }
-  .consult-card p{
-    font-size:14.5px;
-  }
-  .expert-quote{
-    padding:54px 0;
-  }
-  .expert-quote-text{
-    font-size:20px;
   }
   .site-footer{
     padding:32px 0 22px;
