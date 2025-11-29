@@ -73,18 +73,34 @@ document.addEventListener('DOMContentLoaded', function () {
   const heroPlayButton = document.querySelector('.hero-video-play');
 
   if (heroVideo && heroPlayButton) {
+    // Ensure video is initially muted until user interacts (for autoplay policies),
+    // but we will unmute on click.
+    heroVideo.muted = true;
+
     heroPlayButton.addEventListener('click', function () {
-      heroVideo.play().catch(function () {
-        // Fail silently if browser blocks autoplay
-      });
+      // On user click: enable controls + sound, then play
+      heroVideo.muted = false;
+      heroVideo.controls = true;
+
+      if (heroVideo.paused) {
+        heroVideo.play().catch(function () {
+          // If browser blocks play, do nothing
+        });
+      } else {
+        heroVideo.pause();
+      }
     });
 
-    // Hide button when playing, show when paused
+    // Hide button when playing, show when paused/ended
     heroVideo.addEventListener('play', function () {
       heroPlayButton.style.display = 'none';
     });
 
     heroVideo.addEventListener('pause', function () {
+      heroPlayButton.style.display = 'flex';
+    });
+
+    heroVideo.addEventListener('ended', function () {
       heroPlayButton.style.display = 'flex';
     });
   }
