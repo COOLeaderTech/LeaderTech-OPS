@@ -68,110 +68,39 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- Hero video minimal custom controls ---
+  // --- Hero video play logic ---
   const heroVideo = document.getElementById('hero-video');
-  const heroOverlayPlay = document.querySelector('.hero-video-play');
-  const heroControlPlay = document.querySelector('.hero-control-play');
-  const heroProgress = document.querySelector('.hero-control-progress');
-  const heroFullscreen = document.querySelector('.hero-control-fullscreen');
+  const heroPlayButton = document.querySelector('.hero-video-play');
 
-  if (heroVideo) {
-    // Toggle play / pause
-    function togglePlay() {
-      if (heroVideo.paused || heroVideo.ended) {
+  if (heroVideo && heroPlayButton) {
+    // Start with native controls hidden, overlay visible
+    heroVideo.controls = false;
+
+    heroPlayButton.addEventListener('click', function () {
+      // On user click: show controls + enable sound
+      heroVideo.controls = true;
+      heroVideo.muted = false;
+
+      if (heroVideo.paused) {
         heroVideo.play().catch(function () {
           // If browser blocks play, do nothing
         });
       } else {
         heroVideo.pause();
       }
-    }
+    });
 
-    // Overlay big play button
-    if (heroOverlayPlay) {
-      heroOverlayPlay.addEventListener('click', function () {
-        togglePlay();
-      });
-    }
-
-    // Small play button in control bar
-    if (heroControlPlay) {
-      heroControlPlay.addEventListener('click', function () {
-        togglePlay();
-      });
-    }
-
-    // Update UI when playing / paused / ended
+    // Hide overlay button when playing, show when paused/ended
     heroVideo.addEventListener('play', function () {
-      if (heroOverlayPlay) {
-        heroOverlayPlay.style.display = 'none';
-      }
+      heroPlayButton.style.display = 'none';
     });
 
     heroVideo.addEventListener('pause', function () {
-      if (heroOverlayPlay) {
-        heroOverlayPlay.style.display = 'flex';
-      }
+      heroPlayButton.style.display = 'flex';
     });
 
     heroVideo.addEventListener('ended', function () {
-      if (heroOverlayPlay) {
-        heroOverlayPlay.style.display = 'flex';
-      }
-      if (heroProgress) {
-        heroProgress.value = 0;
-      }
+      heroPlayButton.style.display = 'flex';
     });
-
-    // Progress bar: reflect current time
-    if (heroProgress) {
-      heroVideo.addEventListener('timeupdate', function () {
-        if (!heroVideo.duration || isNaN(heroVideo.duration)) return;
-        const percent = (heroVideo.currentTime / heroVideo.duration) * 100;
-        heroProgress.value = percent;
-      });
-
-      // Scrub / swipe to seek
-      heroProgress.addEventListener('input', function () {
-        if (!heroVideo.duration || isNaN(heroVideo.duration)) return;
-        const value = parseFloat(heroProgress.value) || 0;
-        heroVideo.currentTime = heroVideo.duration * (value / 100);
-      });
-    }
-
-    // Fullscreen toggle
-    if (heroFullscreen) {
-      heroFullscreen.addEventListener('click', function () {
-        const elem = heroVideo;
-
-        const isFullscreen =
-          document.fullscreenElement ||
-          document.webkitFullscreenElement ||
-          document.mozFullScreenElement ||
-          document.msFullscreenElement;
-
-        if (!isFullscreen) {
-          if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-          } else if (elem.webkitRequestFullscreen) {
-            elem.webkitRequestFullscreen();
-          } else if (elem.mozRequestFullScreen) {
-            elem.mozRequestFullScreen();
-          } else if (elem.msRequestFullscreen) {
-            elem.msRequestFullscreen();
-          }
-        } else {
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-          } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-          } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-          }
-        }
-      });
-    }
   }
 });
