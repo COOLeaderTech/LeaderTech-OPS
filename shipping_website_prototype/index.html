@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LeaderTech — Ship Management AI</title>
+  <meta name="description" content="Leaderech provides unprecedented ship management AI solutions for fleet operations, 
+                                   technical management, HSQE, and purchasing." />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- ========= UNIFIED HEADER ========= -->
+  <header class="header" id="header" role="banner">
+    <div class="header__inner">
+      <a href="#" class="header__brand" aria-label="LeaderTech Home">
+        <svg class="header__logo" width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <path d="M14 2L26 8v12l-12 6L2 20V8l12-6z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M14 10v8M10 12l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="header__name">LeaderTech.</span>
+      </a>
+
+      <nav class="header__nav" aria-label="Primary navigation">
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="#platform" class="nav-link">Platform</a>
+        <a href="#trust" class="nav-link">Security</a>
+        <a href="#demo" class="nav-link">Demo</a>
+        <a href="#careers" class="nav-link"> <span class="nav-badge"></span></a>
+      </nav>
+
+      <div class="header__actions">
+        <a href="#demo" class="header__cta">Request Demo</a>
+        <button class="header__menu" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+      <a href="#hero" class="mobile-nav__link">Home</a>
+      <a href="#platform" class="mobile-nav__link">Platform</a>
+      <a href="#trust" class="mobile-nav__link">Security</a>
+      <a href="#demo" class="mobile-nav__link">Demo</a>
+      <a href="#careers" class="mobile-nav__link"></a>
+      <a href="#demo" class="mobile-nav__cta">Request Demo</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ========= SECTION 1: HERO ========= -->
+    <section class="hero" id="hero" aria-label="Hero">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__vignette"></div>
+        <div class="hero__grid"></div>
+        <div class="hero__glow"></div>
+
+        <svg class="hero__network" viewBox="0 0 1200 700" preserveAspectRatio="none" aria-hidden="true">
+          <!-- LEFT LINES -> CENTER -->
+          <path class="net-line" d="M240,170 C360,170 380,260 560,260" />
+          <path class="net-line" d="M240,305 C360,305 400,300 560,300" />
+          <path class="net-line" d="M240,440 C360,440 420,340 560,340" />
+
+          <!-- RIGHT LINES -> CENTER -->
+          <path class="net-line" d="M960,170 C840,170 820,260 640,260" />
+          <path class="net-line" d="M960,305 C840,305 800,300 640,300" />
+          <path class="net-line" d="M960,440 C840,440 780,340 640,340" />
+
+          <!-- CENTER BRANCHES -->
+          <path class="net-line net-line--thin" d="M560,260 C600,260 600,230 640,230" />
+          <path class="net-line net-line--thin" d="M560,340 C600,340 600,370 640,370" />
+
+          <!-- LEFT NODES -->
+          <g class="net-node" transform="translate(200 130)">
+            <rect class="node-box" x="0" y="0" width="56" height="56" rx="14"></rect>
+            <path class="node-glyph" d="M20 18h16l4 4v20H20z" />
+            <path class="node-glyph" d="M36 18v4h4" />
+            <path class="node-glyph" d="M22 30h16" />
+            <path class="node-glyph" d="M22 34h12" />
+          </g>
+
+          <g class="net-node net-node--small" transform="translate(260 275)">
+            <rect class="node-box" x="0" y="0" width="46" height="46" rx="13"></rect>
+            <path class="node-glyph" d="M14 26h6l4-10 4 20 4-10h6" />
+          </g>
+
+          <g class="net-node" transform="translate(200 400)">
+            <rect class="node-box" x="0" y="0" width="56" height="56" rx="14"></rect>
+            <path class="node-glyph" d="M20 22c0-4 24-4 24 0s-24 4-24 0Z" />
+            <path class="node-glyph" d="M20 22v18c0 4 24 4 24 0V22" />
+            <path class="node-glyph" d="M20 31c0 4 24 4 24 0" />
+          </g>
+
+          <g class="net-node net-node--small" transform="translate(170 315)">
+            <rect class="node-box" x="0" y="0" width="46" height="46" rx="13"></rect>
+            <path class="node-glyph" d="M14 18h18v14H14z" />
+            <path class="node-glyph" d="M14 18l9 7 9-7" />
+          </g>
+
+          <!-- RIGHT NODES -->
+          <g class="net-node" transform="translate(944 130)">
+            <rect class="node-box" x="0" y="0" width="56" height="56" rx="14"></rect>
+            <path class="node-glyph" d="M20 22h24v18H20z" />
+            <path class="node-glyph" d="M20 22l12 9 12-9" />
+          </g>
+
+          <g class="net-node net-node--small" transform="translate(894 275)">
+            <rect class="node-box" x="0" y="0" width="46" height="46" rx="13"></rect>
+            <path class="node-glyph" d="M16 14h12l4 4v16H16z" />
+            <path class="node-glyph" d="M28 14v4h4" />
+          </g>
+
+          <g class="net-node" transform="translate(944 400)">
+            <rect class="node-box" x="0" y="0" width="56" height="56" rx="14"></rect>
+            <path class="node-glyph" d="M20 24h10l2 3h12v17H20z" />
+            <path class="node-glyph" d="M20 24v-4h12l2 4" />
+          </g>
+
+          <g class="net-node net-node--small" transform="translate(984 315)">
+            <rect class="node-box" x="0" y="0" width="46" height="46" rx="13"></rect>
+            <path class="node-glyph" d="M14 26l6 6 14-16" />
+          </g>
+
+          <!-- CENTER SMALL NODES -->
+          <g class="net-node net-node--tiny" transform="translate(616 212)">
+            <rect class="node-box" x="0" y="0" width="40" height="40" rx="12"></rect>
+            <path class="node-glyph" d="M16 16l8 8-8 8" />
+          </g>
+
+          <g class="net-node net-node--tiny" transform="translate(616 348)">
+            <rect class="node-box" x="0" y="0" width="40" height="40" rx="12"></rect>
+            <path class="node-glyph" d="M14 18h12" />
+            <path class="node-glyph" d="M14 24h12" />
+            <path class="node-glyph" d="M14 30h8" />
+          </g>
+        </svg>
+
+        <div class="hero__beam"></div>
+      </div>
+
+      <div class="hero__content">
+        <h1 class="hero__title">LeaderTech.</h1>
+        <p class="hero__sub">
+          <span></span><br />
+          <span>Ship Management AI</span>
+        </p>
+        <a class="hero__button" href="#demo">Request a working session →</a>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span>Scroll to explore</span>
+        <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+          <rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" stroke-width="1.5"/>
+          <circle class="scroll-dot" cx="8" cy="8" r="2" fill="currentColor"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ========= SECTION 2: PLATFORM ========= -->
+    <section class="layer layer--platform" id="platform" data-layer aria-label="Platform">
+      <div class="wrap">
+        <header class="section-head">
+          <span class="section-badge">Platform</span>
+          <h2 class="h2">One integrated work surface.</h2>
+          <p class="sublede">
+            Not a dashboard. A controlled place where operators turn signal into decision,
+            and decision into record—without losing the source trail.
+          </p>
+        </header>
+
+        <div class="platform">
+          <!-- Left column -->
+          <div class="platform__left" aria-label="Platform surfaces">
+            <p class="label">Surfaces</p>
+
+            <div class="surface-list" role="tablist" aria-label="Select a surface">
+              <button class="surface-item is-active" type="button"
+                role="tab" aria-selected="true" aria-controls="preview"
+                data-surface="ops" id="tab-ops">
+                <span class="surface-item__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 5.5c0-1 .8-1.8 1.8-1.8h12.4c1 0 1.8.8 1.8 1.8v13c0 1-.8 1.8-1.8 1.8H5.8c-1 0-1.8-.8-1.8-1.8v-13Z" stroke="currentColor" stroke-width="1.2"/>
+                    <path d="M7 9h10M7 12h7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <span class="surface-item__text">
+                  <span class="surface-item__title">Fleet Operations</span>
+                  <span class="surface-item__meta">ETAs • ports • exceptions • follow-ups</span>
+                </span>
+                <span class="surface-item__chev" aria-hidden="true">↗</span>
+              </button>
+
+              <button class="surface-item" type="button"
+                role="tab" aria-selected="false" aria-controls="preview"
+                data-surface="tech" id="tab-tech" tabindex="-1">
+                <span class="surface-item__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M14.7 6.2a4.3 4.3 0 0 0-5.9 5.9L5 16l3 3 3.9-3.8a4.3 4.3 0 0 0 5.8-6l-2.3 2.3-2-2 2.3-2.3Z"
+                      stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span class="surface-item__text">
+                  <span class="surface-item__title">Technical</span>
+                  <span class="surface-item__meta">planned work • defects • vendors</span>
+                </span>
+                <span class="surface-item__chev" aria-hidden="true">↗</span>
+              </button>
+
+              <button class="surface-item" type="button"
+                role="tab" aria-selected="false" aria-controls="preview"
+                data-surface="hsqe" id="tab-hsqe" tabindex="-1">
+                <span class="surface-item__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M6 4.5h12c1 0 1.8.8 1.8 1.8v11.4c0 1-.8 1.8-1.8 1.8H6c-1 0-1.8-.8-1.8-1.8V6.3c0-1 .8-1.8 1.8-1.8Z"
+                      stroke="currentColor" stroke-width="1.2"/>
+                    <path d="M8 12.2l2.1 2.1L16.2 8.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span class="surface-item__text">
+                  <span class="surface-item__title">HSQE</span>
+                  <span class="surface-item__meta">incidents • CAPA • evidence</span>
+                </span>
+                <span class="surface-item__chev" aria-hidden="true">↗</span>
+              </button>
+
+              <button class="surface-item" type="button"
+                role="tab" aria-selected="false" aria-controls="preview"
+                data-surface="proc" id="tab-proc" tabindex="-1">
+                <span class="surface-item__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4.2 7c0-1 .8-1.8 1.8-1.8h4.1l1.8 1.8h6.1c1 0 1.8.8 1.8 1.8v9.8c0 1-.8 1.8-1.8 1.8H6c-1 0-1.8-.8-1.8-1.8V7Z"
+                      stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span class="surface-item__text">
+                  <span class="surface-item__title">Purchasing</span>
+                  <span class="surface-item__meta">requisitions • RFQs • approvals</span>
+                </span>
+                <span class="surface-item__chev" aria-hidden="true">↗</span>
+              </button>
+            </div>
+
+            <div class="micro">
+              <p class="micro__title">Quiet by design.</p>
+              <p class="micro__body">
+                State, contrast, and structure—so operators stay in flow.
+              </p>
+            </div>
+
+            <div class="micro" id="trust" aria-label="Trust posture">
+              <p class="micro__title">Trust posture.</p>
+              <ul class="trust-list" aria-label="Baseline posture">
+                <li><span>RBAC / least privilege</span><em>roles define access to actions and records</em></li>
+                <li><span>Audit logs</span><em>key actions are recorded for review</em></li>
+                <li><span>Encryption</span><em>in transit / at rest (deployment-dependent)</em></li>
+                <li><span>On-prem / private network option</span><em>where required</em></li>
+                <li><span>Data retention controls</span><em>defined with the client</em></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right column: dashboard preview -->
+          <div class="platform__right">
+            <div class="preview" id="preview" role="region" aria-label="Surface preview">
+              <div class="preview__top">
+                <div class="preview__title">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span id="pvTitle">Fleet Operations</span>
+                </div>
+
+                <div class="chips" aria-label="Posture">
+                  <span class="chip">traceable</span>
+                  <span class="chip">reviewable</span>
+                  <span class="chip">controlled</span>
+                </div>
+              </div>
+
+              <div class="preview__body" id="pvBody" aria-live="polite"></div>
+
+              <div class="preview__foot">
+                <p class="footnote" id="pvFoot">
+                  Outputs remain anchored to source messages and documents. Human review stays explicit.
+                </p>
+              </div>
+
+              <div class="preview__beam" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-glow" aria-hidden="true"></div>
+    </section>
+
+    <!-- ========= SECTION 3: DEMO / AI SHOWCASE ========= -->
+    <section class="stage" id="demo" aria-label="Demo">
+      <div class="stage__bg" aria-hidden="true">
+        <div class="bg bg-vignette"></div>
+        <div class="bg bg-glow"></div>
+        <div class="bg bg-grain"></div>
+      </div>
+
+      <div class="stage__content">
+        <div class="demo-brand" aria-label="Demo section">
+          <span class="demo-icon" aria-hidden="true">
+            <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+              <defs>
+                <linearGradient id="g" x1="6" y1="6" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FFFFFF" stop-opacity="0.95"/>
+                  <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.70"/>
+                </linearGradient>
+              </defs>
+              <path d="M29.5 10.5c-5.2-5.2-13.6-5.2-18.8 0s-5.2 13.6 0 18.8 13.6 5.2 18.8 0" stroke="url(#g)" stroke-width="3.2" stroke-linecap="round"/>
+              <path d="M22.8 14.2l5.8-5.8" stroke="url(#g)" stroke-width="3.2" stroke-linecap="round"/>
+              <path d="M26.1 18.0l6.9-3.2" stroke="url(#g)" stroke-width="3.2" stroke-linecap="round"/>
+              <path d="M14.4 22.3l11.9-11.9" stroke="url(#g)" stroke-width="3.2" stroke-linecap="round" opacity="0.65"/>
+              <circle cx="21" cy="21" r="1.8" fill="#fff" opacity="0.75"/>
+            </svg>
+          </span>
+          <h2 class="demo-title">Shipping Ops AI</h2>
+        </div>
+
+        <p class="demo-subtitle">Experience how LeaderTech transforms ship management</p>
+
+        <form class="prompt" id="promptForm" autocomplete="off">
+          <div class="prompt-shell">
+            <input
+              id="promptInput"
+              type="text"
+              placeholder="Ask about your vessel operations, crew management, port scheduling..."
+              aria-label="Enter your question"
+            />
+            <button id="generateBtn" type="submit">
+              <span class="btn-label">Ask AI</span>
+            </button>
+          </div>
+          <div class="helper-row" aria-hidden="true">
+            <div class="hint" id="hint"></div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Phone mockups -->
+      <div class="phones" aria-label="Example screens">
+        <div class="phone p1" aria-hidden="true">
+          <div class="device">
+            <div class="notch"></div>
+            <div class="screen">
+              <div class="status">
+                <span>8:41</span>
+                <span class="status-icons">
+                  <i class="dot-status"></i><i class="dot-status"></i><i class="dot-status"></i>
+                  <i class="pill-status"></i>
+                </span>
+              </div>
+              <div class="screen-title">Purchasing Management</div>
+              <div class="screen-card">
+                <div class="line w80"></div>
+                <div class="line w55"></div>
+                <div class="line w70"></div>
+              </div>
+              <div class="list">
+                <div class="row"><span class="chip-mock"></span><span class="line w60"></span></div>
+                <div class="row"><span class="chip-mock"></span><span class="line w52"></span></div>
+                <div class="row"><span class="chip-mock"></span><span class="line w58"></span></div>
+              </div>
+              <div class="bottom-input">
+                <div class="line w72"></div>
+                <div class="send"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone p2" aria-hidden="true">
+          <div class="device">
+            <div class="notch"></div>
+            <div class="screen">
+              <div class="status">
+                <span>8:41</span>
+                <span class="status-icons">
+                  <i class="dot-status"></i><i class="dot-status"></i><i class="dot-status"></i>
+                  <i class="pill-status"></i>
+                </span>
+              </div>
+              <div class="screen-title">AI Ship Management</div>
+              <div class="screen-card">
+                <div class="line w70"></div>
+                <div class="line w62"></div>
+                <div class="line w48"></div>
+              </div>
+              <div class="screen-card mini">
+                <div class="line w58"></div>
+                <div class="line w45"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone p3" aria-hidden="true">
+          <div class="device">
+            <div class="notch"></div>
+            <div class="screen map">
+              <div class="status">
+                <span>8:41</span>
+                <span class="status-icons">
+                  <i class="dot-status"></i><i class="dot-status"></i><i class="dot-status"></i>
+                  <i class="pill-status"></i>
+                </span>
+              </div>
+              <div class="screen-title">Technical Department AI</div>
+
+              <div class="map-wrap">
+                <div class="map-grid"></div>
+                <div class="arc a1"></div>
+                <div class="arc a2"></div>
+                <div class="arc a3"></div>
+                <div class="pin pA"></div>
+                <div class="pin pB"></div>
+                <div class="pin pC"></div>
+                <div class="pin pD"></div>
+              </div>
+
+              <div class="screen-card overlay">
+                <div class="line w85"></div>
+                <div class="line w60"></div>
+              </div>
+
+              <div class="bottom-input">
+                <div class="line w64"></div>
+                <div class="send"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone p4" aria-hidden="true">
+          <div class="device">
+            <div class="notch"></div>
+            <div class="screen">
+              <div class="status">
+                <span>8:41</span>
+                <span class="status-icons">
+                  <i class="dot-status"></i><i class="dot-status"></i><i class="dot-status"></i>
+                  <i class="pill-status"></i>
+                </span>
+              </div>
+              <div class="screen-title">Crews</div>
+              <div class="profile">
+                <div class="avatar"></div>
+                <div class="meta">
+                  <div class="line w55"></div>
+                  <div class="line w38"></div>
+                </div>
+              </div>
+              <div class="screen-card">
+                <div class="line w82"></div>
+                <div class="line w46"></div>
+              </div>
+              <div class="list">
+                <div class="row"><span class="avatar tiny"></span><span class="line w64"></span></div>
+                <div class="row"><span class="avatar tiny"></span><span class="line w52"></span></div>
+                <div class="row"><span class="avatar tiny"></span><span class="line w60"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone p5" aria-hidden="true">
+          <div class="device">
+            <div class="notch"></div>
+            <div class="screen light">
+              <div class="status dark">
+                <span>8:41</span>
+                <span class="status-icons">
+                  <i class="dot-status dark"></i><i class="dot-status dark"></i><i class="dot-status dark"></i>
+                  <i class="pill-status dark"></i>
+                </span>
+              </div>
+              <div class="screen-title dark">Crew Management</div>
+
+              <div class="screen-card white">
+                <div class="line w60 dark"></div>
+                <div class="spark"></div>
+              </div>
+
+              <div class="list lightlist">
+                <div class="row"><span class="ico"></span><span class="line w58 dark"></span></div>
+                <div class="row"><span class="ico"></span><span class="line w46 dark"></span></div>
+                <div class="row"><span class="ico"></span><span class="line w54 dark"></span></div>
+                <div class="row"><span class="ico"></span><span class="line w50 dark"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phones-shadow" aria-hidden="true"></div>
+      </div>
+
+      <!-- Toast notification -->
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <!-- ========= UNIFIED FOOTER ========= -->
+  <footer class="footer" id="careers" role="contentinfo">
+    <div class="footer__glow" aria-hidden="true"></div>
+    
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="#" class="footer__logo">
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+              <path d="M14 2L26 8v12l-12 6L2 20V8l12-6z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <path d="M14 10v8M10 12l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>LeaderTech.</span>
+          </a>
+          <p class="footer__tagline">Unprecedented Ship Management AI</p>
+        </div>
+
+        <div class="footer__links">
+          <div class="footer__col">
+            <h3>Product</h3>
+            <a href="#platform">Platform</a>
+            <a href="#demo">Demo</a>
+            <a href="#">Pricing</a>
+            <a href="#">Changelog</a>
+          </div>
+
+          <div class="footer__col">
+            <h3>Company</h3>
+            <a href="#">About</a>
+            <a href="#"> <span class="footer-badge"</span></a>
+            <a href="#">Blog</a>
+            <a href="#">Press</a>
+          </div>
+
+          <div class="footer__col">
+            <h3>Resources</h3>
+            <a href="#">Documentation</a>
+            <a href="#">API Reference</a>
+            <a href="#">Support</a>
+            <a href="#">Status</a>
+          </div>
+
+          <div class="footer__col">
+            <h3>Legal</h3>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#trust">Security</a>
+            <a href="#">Compliance</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2025 LeaderTech. All rights reserved.</p>
+        
+        <div class="footer__social">
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
